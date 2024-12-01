@@ -1,0 +1,16 @@
+(defun process-input (file)
+  (let ((input (butlast (split-string (f-read-text file) "\n")))
+	(left ()) 
+	(right ()))
+    (dolist (line input)
+      (let ((line-split (split-string line "   ")))
+	(push (string-to-number (car line-split)) left)
+	(push (string-to-number (cadr line-split)) right)))
+    (list (sort left '<) (sort right '<))))
+
+(defun calculate-difference (ids)
+  (let ((left (car ids))
+	(right (cadr ids)))
+    (cl-reduce '+ (cl-mapcar (lambda (x y) (abs (- x y))) left right))))
+
+(calculate-difference (process-input "input.txt"))
