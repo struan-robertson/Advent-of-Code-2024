@@ -24,7 +24,7 @@
     (cl-reduce '+ (mapcar (lambda (x) (* x (cl-count x right))) left))))
 
 ;; Part 1
-(calculate-difference (process-input "input.txt"))
+(calculate-difference (process-input "input"))
 
 ;; Part 2
-(calculate-similarity (process-input "input.txt"))
+(calculate-similarity (process-input "input"))

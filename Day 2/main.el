@@ -43,13 +43,13 @@
 	(cl-return nil)))))
 
 ;; Part 1
-(let ((reports (process-input "input.txt"))
+(let ((reports (process-input "input"))
       (total-safe 0))
   (dolist (report reports total-safe)
     (if (check-safe report) (setq total-safe (1+ total-safe)))))
 
 ;; Part 2
-(let ((reports (process-input "input.txt"))
+(let ((reports (process-input "input"))
       (total-safe 0))
   (dolist (report reports total-safe)
     (let ((nth 0)
