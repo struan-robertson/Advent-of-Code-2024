@@ -1,5 +1,10 @@
+(defmacro read-file (file)
+  `(with-temp-buffer
+     (insert-file-contents ,file)
+     (buffer-string)))
+
 (defun process-input (file)
-  (let ((input (butlast (split-string (f-read-text file) "\n")))
+  (let ((input (butlast (split-string (read-file file) "\n")))
 	(left ()) 
 	(right ()))
     (dolist (line input)
