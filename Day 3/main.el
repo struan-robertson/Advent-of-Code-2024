@@ -1,20 +1,4 @@
-(defmacro read-file (file)
-  `(with-temp-buffer
-     (insert-file-contents ,file)
-     (buffer-string)))
-
-(defun re-seq (regexp string &optional indices)
-  (save-match-data 
-    (let ((pos 0) 
-	  (matches '())
-	  (positions '())) 
-      (while (string-match regexp string pos) 
-	(push (match-string 0 string) matches) 
-	(setq pos (match-end 0))
-	(push (match-beginning 0) positions))
-      (if indices
-	  (cl-mapcar (lambda (x y) `(,x . ,y)) matches positions)
-	matches))))
+(load-file "../lib.el")
 
 (defun parse-mul (instruction)
   (let ((numbers (mapcar 'string-to-number (re-seq "[0-9]+" instruction))))

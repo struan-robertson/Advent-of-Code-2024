@@ -1,7 +1,4 @@
-(defmacro read-file (file)
-  `(with-temp-buffer
-     (insert-file-contents ,file)
-     (buffer-string)))
+(load-file "../lib.el")
 
 (defun process-input (file)
   (let ((input (butlast (split-string (read-file file) "\n")))

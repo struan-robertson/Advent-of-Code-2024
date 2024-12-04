@@ -1,14 +1,4 @@
-(defmacro read-file (file)
-  `(with-temp-buffer
-     (insert-file-contents ,file)
-     (buffer-string)))
-
-;; Taken from https://emacs.stackexchange.com/questions/29786/how-to-remove-delete-nth-element-of-a-list
-(defun remove-nth-element (nth list)
-  (if (zerop nth) (cdr list) ;; If nth is zero, just return cdr of list
-    (let ((last (nthcdr (1- nth) list))) ;; Get cdr of object before nth
-      (setcdr last (cddr last)) ;; Set the cdr of last to the cdr of the cdr of last (i.e. the object after nth)
-      list))) 
+(load-file "../lib.el")
 
 (defun process-input (file)
   (let ((input (butlast (split-string (read-file file) "\n")))
